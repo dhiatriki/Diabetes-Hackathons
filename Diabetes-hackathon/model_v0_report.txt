@@ -1,0 +1,88 @@
+Model 1: Baseline Classification Model
+Objective
+
+The objective of this first model was to establish a baseline for predicting diabetes status using the provided dataset. This model serves as an initial reference point to evaluate model behavior and identify limitations before applying more advanced techniques.
+
+Data Preprocessing
+
+The dataset was loaded using Pandas.
+
+Input features (X) were separated from the target variable (y).
+
+The target variable consisted of three classes:
+
+0 → No diabetes
+
+1 → Pre-diabetes
+
+2 → Diabetes
+
+The data was split into training and testing sets using an 80/20 train-test split.
+
+No class balancing or resampling techniques were applied at this stage.
+
+Model Used
+
+Algorithm: Logistic Regression
+
+Library: scikit-learn (sklearn.linear_model.LogisticRegression)
+
+Type: Multiclass classification (One-vs-Rest strategy)
+
+Purpose: Establish a simple and interpretable baseline model
+
+Logistic Regression was chosen due to its simplicity, fast training time, and its common use as a baseline classifier in medical prediction tasks.
+
+Training Procedure
+
+The model was trained on the training dataset using default hyperparameters.
+
+No hyperparameter tuning was performed.
+
+No feature scaling or normalization was applied.
+
+The model learned linear decision boundaries between the classes.
+
+Evaluation Metrics
+
+The model was evaluated using:
+
+Accuracy
+
+Precision
+
+Recall
+
+F1-score
+
+Classification Report
+
+These metrics were chosen to assess not only overall correctness but also per-class performance.
+
+Results
+
+Overall accuracy: 71%
+
+The model performed reasonably well for classes 0 (no diabetes) and 2 (diabetes).
+
+However, the model failed to identify class 1 (pre-diabetes), achieving:
+
+Recall = 0.00
+
+F1-score = 0.00
+
+This indicates that the model did not predict any instances of the pre-diabetic class.
+
+Limitations Identified
+
+Class imbalance: The pre-diabetic class was underrepresented compared to the other classes.
+
+Metric limitation: Accuracy proved to be misleading, as it did not reflect the model’s failure to detect an entire class.
+
+Model simplicity: Logistic Regression without tuning or class weighting was insufficient for capturing class-specific patterns.
+
+Conclusion
+
+This baseline model demonstrated that a simple multiclass Logistic Regression approach is inadequate for this problem. While the accuracy appeared acceptable, the model’s inability to detect pre-diabetic cases highlights the need for improved modeling strategies, better class handling, and more appropriate evaluation metrics.
+
+This model provides a critical reference point for future improvements.

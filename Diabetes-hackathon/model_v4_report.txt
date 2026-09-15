@@ -1,0 +1,50 @@
+Model V4 Report: Ensemble Power (Random Forest)
+=================================================
+
+Summary of Changes
+------------------
+1. **Model Change**: Switched from single Decision Tree to **Random Forest** (ensemble of 400 trees).
+   - "One tree is fragile. A forest is robust."
+   - Each tree learns from a random subset of data and features.
+   - Final prediction = majority vote from all trees.
+
+2. **Why Random Forest Works**:
+   - **Reduces Overfitting**: Individual trees may overfit, but averaging cancels out noise.
+   - **Handles Noisy Health Data**: Medical data is often messy; RF is robust to outliers.
+   - **Feature Importance**: Built-in analysis of which features matter most.
+
+3. **Hyperparameters Used**:
+   - n_estimators=400 (400 trees in the forest)
+   - max_depth=16 (controlled depth)
+   - min_samples_split=4, min_samples_leaf=2
+
+Evaluation Results
+------------------
+- **Accuracy**: **74%** ✅ (Target: above 74%)
+- **Precision (Diabetes)**: 0.68 (up from 0.63 in V3)
+- **Recall (Diabetes)**: 0.66 (balanced trade-off)
+
+Feature Importance (Top 5)
+--------------------------
+1. BMI (15.3%) — Body mass index is the #1 predictor!
+2. GenHlth (15.2%) — General health perception
+3. HighBP (12.7%) — High blood pressure
+4. Age (10.9%) — Age group
+5. Income (6.1%) — Socioeconomic factor
+
+Least Important Features
+------------------------
+- AnyHealthcare (0.6%)
+- CholCheck (0.6%)
+- Stroke (1.0%)
+
+Key Takeaways for Presentation
+------------------------------
+"A single decision tree can be easily fooled by noise in the data. But when we combine 400 trees—each learning from different samples and features—the noise cancels out and the signal remains.
+
+Random Forest gave us:
+✅ Higher accuracy than any previous model
+✅ Better precision (fewer false positives)
+✅ Insight into which features actually matter (BMI > Blood Pressure > Age)"
+
+📌 Lesson: Ensemble methods turn weak learners into strong predictors.

@@ -1,0 +1,36 @@
+Model V3 Report: First Real Upgrade (Decision Tree)
+====================================================
+
+Summary of Changes
+------------------
+1. **Model Change**: Switched from Logistic Regression to **Decision Tree**.
+   - Decision Trees can capture non-linear interactions (e.g., BMI + Age + Blood Pressure combinations).
+   - No need for One-Hot Encoding or Scaling — trees handle raw ordinal data naturally.
+
+2. **Tuning for Precision**:
+   - `max_depth=8`: Shallower tree to reduce overfitting and false positives.
+   - `min_samples_split=20`: Requires more samples to make a split (more confident decisions).
+   - `min_samples_leaf=10`: Larger leaf nodes for more stable predictions.
+   - `class_weight='balanced'`: Accounts for class imbalance.
+
+Evaluation Results
+------------------
+- **Accuracy**: ~72% (slightly lower than V2's 74%)
+- **Recall (Diabetes)**: **0.75** (UP from 0.64 in V2!) — The model now catches 75% of diabetic patients.
+- **Precision (Diabetes)**: 0.63 (down from 0.68)
+
+Key Takeaways for Presentation
+------------------------------
+"Linear models like Logistic Regression assume a straight-line relationship between features and outcomes. But health is complex — BMI affects risk differently at different ages. Decision Trees can learn these interactions automatically.
+
+The trade-off: We improved **Recall** (catching more diabetics) at the cost of some **Precision** (more false positives). This is acceptable in medical screening where missing a case is worse than a false alarm."
+
+Top 5 Important Features (Learned by Tree)
+------------------------------------------
+1. HighBP (38%)
+2. GenHlth (29%)
+3. BMI (12%)
+4. Age (11%)
+5. HighChol (4%)
+
+📌 Lesson: Some problems need non-linear thinking.
